@@ -6,8 +6,8 @@ using UnityEngine;
 public class PlayerCore : MonoBehaviour
 {
 
-    [NonSerialized]
-    public Rigidbody rigidbody;
+    // [NonSerialized]
+    public Rigidbody rb;
 	
     [NonSerialized]
     public PlayerCore core;
@@ -16,20 +16,19 @@ public class PlayerCore : MonoBehaviour
     public PlayerMovement movement;
     
     [NonSerialized]
-    public PlayerController controller;
+    public PlayerInput controller;
 
+    public GameObject cameraFollowTarget;
     
     // [NonSerialized]
-    // public Camera cam;
-    //
+    public Transform cam;
     // public PlayerCamera camera;
 
 
     private void Awake() {
-	    // this.collider = this.GetComponent<CapsuleCollider>();
-	    rigidbody = GetComponent<Rigidbody>();
+	    // rb = GetComponent<Rigidbody>();  // FIXME: Returning null for some reason?
 	    core = GetComponent<PlayerCore>();
 	    movement = GetComponent<PlayerMovement>();
-	    controller = GetComponent<PlayerController>();
+	    controller = GetComponent<PlayerInput>();
     }
 }

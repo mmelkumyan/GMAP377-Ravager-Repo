@@ -41,6 +41,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""27341b07-45ea-484b-bdea-8383d80085d3"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -153,6 +161,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Sink"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01b546e8-0a3d-41cd-9ae7-d4351352d2a8"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2b0a1e91-7190-4a95-945a-12ef4d212b40"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +194,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_Rise = m_Gameplay.FindAction("Rise", throwIfNotFound: true);
         m_Gameplay_Sink = m_Gameplay.FindAction("Sink", throwIfNotFound: true);
+        m_Gameplay_Look = m_Gameplay.FindAction("Look", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -216,6 +247,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Rise;
     private readonly InputAction m_Gameplay_Sink;
+    private readonly InputAction m_Gameplay_Look;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -223,6 +255,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Rise => m_Wrapper.m_Gameplay_Rise;
         public InputAction @Sink => m_Wrapper.m_Gameplay_Sink;
+        public InputAction @Look => m_Wrapper.m_Gameplay_Look;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -241,6 +274,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Sink.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSink;
                 @Sink.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSink;
                 @Sink.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSink;
+                @Look.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLook;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -254,6 +290,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Sink.started += instance.OnSink;
                 @Sink.performed += instance.OnSink;
                 @Sink.canceled += instance.OnSink;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
             }
         }
     }
@@ -263,5 +302,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnRise(InputAction.CallbackContext context);
         void OnSink(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
 }
