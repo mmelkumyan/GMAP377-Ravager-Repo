@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private PlayerCore core;
-    private Rigidbody rb;
 
     [Header("Basic Movement")]
     public float maxSpeed = 10f;
@@ -24,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
     
     private void Awake() {
         core = GetComponent<PlayerCore>();
-        rb = core.rb;
     }
 
     public void MovePlayer(Vector2 moveDir) {
@@ -34,10 +32,10 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, targetAngle, 0), rotationSpeed * Time.deltaTime);
             
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            rb.velocity = moveDirection * maxSpeed;
+            core.rb.velocity = moveDirection * maxSpeed;
         }
         else { //off left stick -> decellerate to zero in currentDir
-            rb.velocity = Vector3.Lerp(rb.velocity,  Vector3.zero, deceleration * Time.deltaTime);
+            core.rb.velocity = Vector3.Lerp(core.rb.velocity,  Vector3.zero, deceleration * Time.deltaTime);
         }
     }
 

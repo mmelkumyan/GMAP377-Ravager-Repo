@@ -1,17 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
-public class PlayerCamera : MonoBehaviour
+public class PlayerCamera : MonoBehaviour 
 {
-    public PlayerCore core;
-	   
-    public float followSpeed = 5f;
-    public Vector3 cameraOffset;
-	   
-    private void LateUpdate() {
-        Vector3 pos = core.transform.position;
-        Vector3 targetPos = new Vector3(pos.x + cameraOffset.x, pos.y + cameraOffset.y, pos.z + cameraOffset.z);
-        transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * followSpeed);
+    public GameObject freeCamera;
+    public GameObject leftAimCamera;
+    public GameObject rightAimCamera;
+
+    private PlayerCore core;
+
+    private void Awake() {
+        core = GetComponent<PlayerCore>();
+    }
+
+    private void Update() {
+        if (core.leftAiming) {
+            leftAimCamera.SetActive(true);
+            freeCamera.SetActive(false);
+            rightAimCamera.SetActive(false);
+        }
+        else if (core.rightAiming) {
+            rightAimCamera.SetActive(true);
+            freeCamera.SetActive(false);
+            leftAimCamera.SetActive(false);
+        }
+        else {
+            freeCamera.SetActive(true);
+            leftAimCamera.SetActive(false);
+            rightAimCamera.SetActive(false);
+        }
     }
 }

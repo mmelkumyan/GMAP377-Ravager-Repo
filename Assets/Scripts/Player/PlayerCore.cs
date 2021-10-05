@@ -19,16 +19,22 @@ public class PlayerCore : MonoBehaviour
     public PlayerInput controller;
 
     public GameObject cameraFollowTarget;
+
+    [NonSerialized]
+    public PlayerArms arms;
     
     // [NonSerialized]
     public Transform cam;
     // public PlayerCamera camera;
 
+    public Boolean leftAiming = false;
+    public Boolean rightAiming = false;
 
     private void Awake() {
 	    // rb = GetComponent<Rigidbody>();  // FIXME: Returning null for some reason?
 	    core = GetComponent<PlayerCore>();
 	    movement = GetComponent<PlayerMovement>();
 	    controller = GetComponent<PlayerInput>();
+	    arms = GetComponent<PlayerArms>();
     }
 }
