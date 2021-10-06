@@ -38,15 +38,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "RightAim",
-                    "type": "Button",
-                    "id": "7e6c03c8-f7e8-4549-bb9d-cbda57b3aa64",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "LeftAim",
+                    "name": "Aim",
                     "type": "Button",
                     "id": "69a041c5-fe58-4afa-8d5b-f72f826ea086",
                     "expectedControlType": "Button",
@@ -54,7 +46,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Punch",
+                    "name": "PunchLeft",
                     "type": "Button",
                     "id": "925a1e3b-b6d6-4e0e-a3b9-8a078616e6a8",
                     "expectedControlType": "Button",
@@ -62,9 +54,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Test",
+                    "name": "PunchRight",
                     "type": "Button",
-                    "id": "279523d2-0720-416e-b7c9-212cd874fad3",
+                    "id": "7a090799-a85a-4cc2-8dec-512f7df91360",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -205,34 +197,12 @@
                 },
                 {
                     "name": "",
-                    "id": "f30d195d-6ed6-4443-bea6-718b0fd94646",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RightAim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "07aea23c-93ad-43ab-bac4-1e3248c12db6",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RightAim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "24ed5522-96b1-4259-8cd2-013b2b59495f",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LeftAim",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -243,40 +213,51 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LeftAim",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "1971c240-6858-4355-a0c5-13493d6ab3ae",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Punch",
+                    "action": "PunchLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "19543524-4362-4bef-9778-eba1599ca520",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Punch",
+                    "action": "PunchLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "13f76272-e5d4-40c8-91ae-7f8b524591b4",
-                    "path": "<Keyboard>/1",
+                    "id": "75f149df-212b-4723-bbb6-60ed61775fa2",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Test",
+                    "action": "PunchRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a5cb40bc-56f9-40ef-80b5-f925a2bef17f",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PunchRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

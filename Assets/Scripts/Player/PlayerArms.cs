@@ -15,22 +15,22 @@ public class PlayerArms : MonoBehaviour
         core = GetComponent<PlayerCore>();
     }
 
-    public void Punch() {
-        if (core.cam.leftAiming || !(core.cam.leftAiming || core.cam.rightAiming)) {
-            PunchLeft();
-        }
-        if (core.cam.rightAiming || !(core.cam.leftAiming || core.cam.rightAiming)) {
-            PunchRight();
-        }
+    // public void Punch() {
+    //     if (core.cam.leftAiming || !(core.cam.leftAiming || core.cam.rightAiming)) {
+    //         PunchLeft();
+    //     }
+    //     if (core.cam.rightAiming || !(core.cam.leftAiming || core.cam.rightAiming)) {
+    //         PunchRight();
+    //     }
+    //
+    //     Debug.Log("Punch!");
+    // }
 
-        Debug.Log("Punch!");
-    }
-
-    private void PunchLeft() {
+    public void PunchLeft() {
         leftAnimator.SetTrigger("Punch");
     }
 
-    private void PunchRight() {
+    public void PunchRight() {
         rightAnimator.SetTrigger("Punch");
     }
 

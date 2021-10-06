@@ -51,15 +51,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""RightAim"",
-                    ""type"": ""Button"",
-                    ""id"": ""7e6c03c8-f7e8-4549-bb9d-cbda57b3aa64"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""LeftAim"",
+                    ""name"": ""Aim"",
                     ""type"": ""Button"",
                     ""id"": ""69a041c5-fe58-4afa-8d5b-f72f826ea086"",
                     ""expectedControlType"": ""Button"",
@@ -67,7 +59,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Punch"",
+                    ""name"": ""PunchLeft"",
                     ""type"": ""Button"",
                     ""id"": ""925a1e3b-b6d6-4e0e-a3b9-8a078616e6a8"",
                     ""expectedControlType"": ""Button"",
@@ -75,9 +67,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Test"",
+                    ""name"": ""PunchRight"",
                     ""type"": ""Button"",
-                    ""id"": ""279523d2-0720-416e-b7c9-212cd874fad3"",
+                    ""id"": ""7a090799-a85a-4cc2-8dec-512f7df91360"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -218,34 +210,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f30d195d-6ed6-4443-bea6-718b0fd94646"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RightAim"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""07aea23c-93ad-43ab-bac4-1e3248c12db6"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RightAim"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""24ed5522-96b1-4259-8cd2-013b2b59495f"",
                     ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""LeftAim"",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -256,40 +226,51 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""LeftAim"",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""1971c240-6858-4355-a0c5-13493d6ab3ae"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Punch"",
+                    ""action"": ""PunchLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""19543524-4362-4bef-9778-eba1599ca520"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Punch"",
+                    ""action"": ""PunchLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""13f76272-e5d4-40c8-91ae-7f8b524591b4"",
-                    ""path"": ""<Keyboard>/1"",
+                    ""id"": ""75f149df-212b-4723-bbb6-60ed61775fa2"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Test"",
+                    ""action"": ""PunchRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a5cb40bc-56f9-40ef-80b5-f925a2bef17f"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PunchRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -304,10 +285,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay_Rise = m_Gameplay.FindAction("Rise", throwIfNotFound: true);
         m_Gameplay_Sink = m_Gameplay.FindAction("Sink", throwIfNotFound: true);
         m_Gameplay_Look = m_Gameplay.FindAction("Look", throwIfNotFound: true);
-        m_Gameplay_RightAim = m_Gameplay.FindAction("RightAim", throwIfNotFound: true);
-        m_Gameplay_LeftAim = m_Gameplay.FindAction("LeftAim", throwIfNotFound: true);
-        m_Gameplay_Punch = m_Gameplay.FindAction("Punch", throwIfNotFound: true);
-        m_Gameplay_Test = m_Gameplay.FindAction("Test", throwIfNotFound: true);
+        m_Gameplay_Aim = m_Gameplay.FindAction("Aim", throwIfNotFound: true);
+        m_Gameplay_PunchLeft = m_Gameplay.FindAction("PunchLeft", throwIfNotFound: true);
+        m_Gameplay_PunchRight = m_Gameplay.FindAction("PunchRight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -361,10 +341,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Rise;
     private readonly InputAction m_Gameplay_Sink;
     private readonly InputAction m_Gameplay_Look;
-    private readonly InputAction m_Gameplay_RightAim;
-    private readonly InputAction m_Gameplay_LeftAim;
-    private readonly InputAction m_Gameplay_Punch;
-    private readonly InputAction m_Gameplay_Test;
+    private readonly InputAction m_Gameplay_Aim;
+    private readonly InputAction m_Gameplay_PunchLeft;
+    private readonly InputAction m_Gameplay_PunchRight;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -373,10 +352,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Rise => m_Wrapper.m_Gameplay_Rise;
         public InputAction @Sink => m_Wrapper.m_Gameplay_Sink;
         public InputAction @Look => m_Wrapper.m_Gameplay_Look;
-        public InputAction @RightAim => m_Wrapper.m_Gameplay_RightAim;
-        public InputAction @LeftAim => m_Wrapper.m_Gameplay_LeftAim;
-        public InputAction @Punch => m_Wrapper.m_Gameplay_Punch;
-        public InputAction @Test => m_Wrapper.m_Gameplay_Test;
+        public InputAction @Aim => m_Wrapper.m_Gameplay_Aim;
+        public InputAction @PunchLeft => m_Wrapper.m_Gameplay_PunchLeft;
+        public InputAction @PunchRight => m_Wrapper.m_Gameplay_PunchRight;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -398,18 +376,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Look.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLook;
-                @RightAim.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRightAim;
-                @RightAim.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRightAim;
-                @RightAim.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRightAim;
-                @LeftAim.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLeftAim;
-                @LeftAim.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLeftAim;
-                @LeftAim.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLeftAim;
-                @Punch.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPunch;
-                @Punch.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPunch;
-                @Punch.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPunch;
-                @Test.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTest;
-                @Test.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTest;
-                @Test.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTest;
+                @Aim.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
+                @Aim.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
+                @Aim.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
+                @PunchLeft.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPunchLeft;
+                @PunchLeft.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPunchLeft;
+                @PunchLeft.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPunchLeft;
+                @PunchRight.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPunchRight;
+                @PunchRight.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPunchRight;
+                @PunchRight.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPunchRight;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -426,18 +401,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @RightAim.started += instance.OnRightAim;
-                @RightAim.performed += instance.OnRightAim;
-                @RightAim.canceled += instance.OnRightAim;
-                @LeftAim.started += instance.OnLeftAim;
-                @LeftAim.performed += instance.OnLeftAim;
-                @LeftAim.canceled += instance.OnLeftAim;
-                @Punch.started += instance.OnPunch;
-                @Punch.performed += instance.OnPunch;
-                @Punch.canceled += instance.OnPunch;
-                @Test.started += instance.OnTest;
-                @Test.performed += instance.OnTest;
-                @Test.canceled += instance.OnTest;
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
+                @PunchLeft.started += instance.OnPunchLeft;
+                @PunchLeft.performed += instance.OnPunchLeft;
+                @PunchLeft.canceled += instance.OnPunchLeft;
+                @PunchRight.started += instance.OnPunchRight;
+                @PunchRight.performed += instance.OnPunchRight;
+                @PunchRight.canceled += instance.OnPunchRight;
             }
         }
     }
@@ -448,9 +420,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnRise(InputAction.CallbackContext context);
         void OnSink(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnRightAim(InputAction.CallbackContext context);
-        void OnLeftAim(InputAction.CallbackContext context);
-        void OnPunch(InputAction.CallbackContext context);
-        void OnTest(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
+        void OnPunchLeft(InputAction.CallbackContext context);
+        void OnPunchRight(InputAction.CallbackContext context);
     }
 }

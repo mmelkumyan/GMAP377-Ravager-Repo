@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -12,42 +13,51 @@ public class PlayerMovement : MonoBehaviour
     public float acceleration = 1200f;
     public float deceleration = 20f;
     
-    
-    
-    public float rotationSpeed = 15f;
+    public float freecamRotationSpeed = 15f;
+    public float povRotationSpeed = 7.5f;
+    private float rotationSpeed;
     
     // NOTE: Aiming is currently handled by Cinemachine
-    // [Header("Aiming")]
-    // float rotationPower = 1f;
+    [Header("Aiming")]
+    public float lookSensitivity = 100f;
 
     [Header("Rise/ Sink")] 
+    public float riseSpeed = 10f;
+    public float sinkSpeed = 10f;
+    
     [NonSerialized]
     public bool isRising = false;
     [NonSerialized]
     public bool isSinking = false;
-
-    public float riseSpeed = 10f;
-    public float sinkSpeed = 10f;
+    
+    
+    // BRACKEYS
+    private float xRotation = 0f;
     
     
     private void Awake() {
         core = GetComponent<PlayerCore>();
     }
 
+    private void Update() {
+        // TODO: Lerp between these two
+        rotationSpeed = core.cam.aiming ? povRotationSpeed : freecamRotationSpeed;
+    }
+
     private void FixedUpdate() {
         if (!(isRising && isSinking)) {  // Cannot rise and sink at same time
             if (isRising) {
-                core.rb.velocity += riseSpeed * Vector3.up;
+                Rise();
             }
             if (isSinking) {
-                core.rb.velocity += sinkSpeed * Vector3.down;
+                Sink();
             }
         }
         
     }
 
     public void MovePlayer(Vector2 moveDir) {
-        // TODO: Acceleration and deceleration
+        // TODO: Implement acceleration
         if (moveDir.magnitude > 0.1) {
             float targetAngle = Mathf.Atan2(moveDir.x, moveDir.y) * Mathf.Rad2Deg + core.camTransform.eulerAngles.y;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, targetAngle, 0), rotationSpeed * Time.deltaTime);
@@ -55,12 +65,27 @@ public class PlayerMovement : MonoBehaviour
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             core.rb.velocity = moveDirection * maxSpeed;
         }
-        else { //off left stick -> decellerate to zero in currentDir
+        else { //off left stick -> decelerate to zero in currentDir
             core.rb.velocity = Vector3.Lerp(core.rb.velocity,  Vector3.zero, deceleration * Time.deltaTime);
         }
     }
 
     public void AimPlayer(Vector2 aimDir) {
+        if (core.cam.aiming) {
+            // Debug.Log("Aiming");
+            // Debug.Log(aimDir);
+            // TODO: Fix this!
+            
+            float aim_y = aimDir.y * lookSensitivity * Time.deltaTime;
+            
+            xRotation -= aim_y;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            
+            core.camTransform.localRotation = quaternion.Euler(xRotation, 0f, 0f);
+            // core.transform.localRotation = quaternion.Euler(xRotation, 0f, 0f);
+        }
+        
+        
         // NOTE: Right now aiming is handled by Cinecachine
         
         // aimDir = aimDir.normalized;
@@ -72,11 +97,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Rise() {
-        core.rb.AddForce(10000f * Vector3.up);
+        core.rb.velocity += riseSpeed * Vector3.up * Time.deltaTime;
     }
 
     public void Sink() {
-        core.rb.AddForce(-10000f * Vector3.up);
+        core.rb.velocity += sinkSpeed * Vector3.down * Time.deltaTime;
     }
     
     private Vector2 V3ToV2(Vector3 v3) {

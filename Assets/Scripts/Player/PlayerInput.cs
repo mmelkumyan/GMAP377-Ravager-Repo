@@ -18,18 +18,21 @@ public class PlayerInput : MonoBehaviour
     }
 
     private void Start() {
+        // TODO: Hide mouse when playing
+        // if (playerControls.Gameplay.Aim.bindings<>...)
+        // Cursor.lockState = CursorLockMode.Locked;  
+        
         playerControls.Gameplay.Rise.performed += ctx => core.movement.isRising = true;
         playerControls.Gameplay.Rise.canceled += ctx => core.movement.isRising = false;
         
         playerControls.Gameplay.Sink.performed += ctx => core.movement.isSinking = true;
         playerControls.Gameplay.Sink.canceled += ctx => core.movement.isSinking = false;
         
-        playerControls.Gameplay.Punch.performed += ctx => core.arms.Punch();
+        playerControls.Gameplay.PunchLeft.performed += ctx => core.arms.PunchLeft();
+        playerControls.Gameplay.PunchRight.performed += ctx => core.arms.PunchRight();
         
-        playerControls.Gameplay.LeftAim.performed += ctx => core.cam.leftAiming = true;
-        playerControls.Gameplay.LeftAim.canceled += ctx => core.cam.leftAiming = false;
-        playerControls.Gameplay.RightAim.performed += ctx => core.cam.rightAiming = true;
-        playerControls.Gameplay.RightAim.canceled += ctx => core.cam.rightAiming = false;
+        playerControls.Gameplay.Aim.performed += ctx => core.cam.aiming = true;
+        playerControls.Gameplay.Aim.canceled += ctx => core.cam.aiming = false;
     }
 
     private void Update() {

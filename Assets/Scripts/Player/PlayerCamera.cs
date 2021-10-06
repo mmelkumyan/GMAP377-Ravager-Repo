@@ -7,13 +7,18 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour 
 {
     public GameObject freeCamera;
-    public GameObject leftAimCamera;
-    public GameObject rightAimCamera;
+    // public GameObject leftAimCamera;
+    // public GameObject rightAimCamera;
+
+    public GameObject aimCamera;
     
     [NonSerialized]
-    public Boolean leftAiming = false;
+    public bool leftAiming = false;
     [NonSerialized]
-    public Boolean rightAiming = false;
+    public bool rightAiming = false;
+
+    [NonSerialized]
+    public bool aiming = false;
 
     private PlayerCore core;
 
@@ -22,20 +27,29 @@ public class PlayerCamera : MonoBehaviour
     }
 
     private void Update() {
-        if (leftAiming) {
-            leftAimCamera.SetActive(true);
+        // if (leftAiming) {
+        //     leftAimCamera.SetActive(true);
+        //     freeCamera.SetActive(false);
+        //     rightAimCamera.SetActive(false);
+        // }
+        // else if (rightAiming) {
+        //     rightAimCamera.SetActive(true);
+        //     freeCamera.SetActive(false);
+        //     leftAimCamera.SetActive(false);
+        // }
+        // else {
+        //     freeCamera.SetActive(true);
+        //     leftAimCamera.SetActive(false);
+        //     rightAimCamera.SetActive(false);
+        // }
+
+        if (aiming) {
+            aimCamera.SetActive(true);
             freeCamera.SetActive(false);
-            rightAimCamera.SetActive(false);
-        }
-        else if (rightAiming) {
-            rightAimCamera.SetActive(true);
-            freeCamera.SetActive(false);
-            leftAimCamera.SetActive(false);
         }
         else {
+            aimCamera.SetActive(false);
             freeCamera.SetActive(true);
-            leftAimCamera.SetActive(false);
-            rightAimCamera.SetActive(false);
         }
     }
 }
