@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     public void MovePlayer(Vector2 moveDir) {
         // TODO: Acceleration and deceleration
         if (moveDir.magnitude > 0.1) {
-            float targetAngle = Mathf.Atan2(moveDir.x, moveDir.y) * Mathf.Rad2Deg + core.cam.eulerAngles.y;
+            float targetAngle = Mathf.Atan2(moveDir.x, moveDir.y) * Mathf.Rad2Deg + core.camTransform.eulerAngles.y;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, targetAngle, 0), rotationSpeed * Time.deltaTime);
             
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;

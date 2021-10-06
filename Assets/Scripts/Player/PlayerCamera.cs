@@ -9,6 +9,11 @@ public class PlayerCamera : MonoBehaviour
     public GameObject freeCamera;
     public GameObject leftAimCamera;
     public GameObject rightAimCamera;
+    
+    [NonSerialized]
+    public Boolean leftAiming = false;
+    [NonSerialized]
+    public Boolean rightAiming = false;
 
     private PlayerCore core;
 
@@ -17,12 +22,12 @@ public class PlayerCamera : MonoBehaviour
     }
 
     private void Update() {
-        if (core.leftAiming) {
+        if (leftAiming) {
             leftAimCamera.SetActive(true);
             freeCamera.SetActive(false);
             rightAimCamera.SetActive(false);
         }
-        else if (core.rightAiming) {
+        else if (rightAiming) {
             rightAimCamera.SetActive(true);
             freeCamera.SetActive(false);
             leftAimCamera.SetActive(false);

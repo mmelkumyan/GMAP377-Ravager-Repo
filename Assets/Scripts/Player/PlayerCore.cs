@@ -23,15 +23,9 @@ public class PlayerCore : MonoBehaviour
     [NonSerialized]
     public PlayerArms arms;
     
-    // [NonSerialized]
-    public Transform cam;
-    // public PlayerCamera camera;
-    
-    // TODO: Move to PlayerCamera
+    public Transform camTransform;
     [NonSerialized]
-    public Boolean leftAiming = false;
-    [NonSerialized]
-    public Boolean rightAiming = false;
+    public PlayerCamera camera;
 
     private void Awake() {
 	    // rb = GetComponent<Rigidbody>();  // FIXME: Returning null for some reason?
@@ -39,5 +33,6 @@ public class PlayerCore : MonoBehaviour
 	    movement = GetComponent<PlayerMovement>();
 	    controller = GetComponent<PlayerInput>();
 	    arms = GetComponent<PlayerArms>();
+	    camera = GetComponent<PlayerCamera>();
     }
 }

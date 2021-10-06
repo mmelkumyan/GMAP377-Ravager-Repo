@@ -16,14 +16,22 @@ public class PlayerArms : MonoBehaviour
     }
 
     public void Punch() {
-        if (core.leftAiming || !(core.leftAiming || core.rightAiming)) {
-            leftAnimator.SetTrigger("Punch");
+        if (core.camera.leftAiming || !(core.camera.leftAiming || core.camera.rightAiming)) {
+            PunchLeft();
         }
-        if (core.rightAiming || !(core.leftAiming || core.rightAiming)) {
-            rightAnimator.SetTrigger("Punch");
+        if (core.camera.rightAiming || !(core.camera.leftAiming || core.camera.rightAiming)) {
+            PunchRight();
         }
 
         Debug.Log("Punch!");
+    }
+
+    private void PunchLeft() {
+        leftAnimator.SetTrigger("Punch");
+    }
+
+    private void PunchRight() {
+        rightAnimator.SetTrigger("Punch");
     }
 
 }
