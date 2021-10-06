@@ -26,8 +26,9 @@ public class PlayerCore : MonoBehaviour
     // [NonSerialized]
     public Transform cam;
     // public PlayerCamera camera;
-
+    [NonSerialized]
     public Boolean leftAiming = false;
+    [NonSerialized]
     public Boolean rightAiming = false;
 
     private void Awake() {
