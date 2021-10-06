@@ -26,6 +26,8 @@ public class PlayerCore : MonoBehaviour
     // [NonSerialized]
     public Transform cam;
     // public PlayerCamera camera;
+    
+    // TODO: Move to PlayerCamera
     [NonSerialized]
     public Boolean leftAiming = false;
     [NonSerialized]

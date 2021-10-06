@@ -18,8 +18,11 @@ public class PlayerInput : MonoBehaviour
     }
 
     private void Start() {
-        playerControls.Gameplay.Rise.performed += ctx => core.movement.Rise();
-        playerControls.Gameplay.Sink.performed += ctx => core.movement.Sink();
+        playerControls.Gameplay.Rise.performed += ctx => core.movement.isRising = true;
+        playerControls.Gameplay.Rise.canceled += ctx => core.movement.isRising = false;
+        
+        playerControls.Gameplay.Sink.performed += ctx => core.movement.isSinking = true;
+        playerControls.Gameplay.Sink.canceled += ctx => core.movement.isSinking = false;
         
         playerControls.Gameplay.Punch.performed += ctx => core.arms.Punch();
         

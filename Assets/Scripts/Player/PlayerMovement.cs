@@ -12,17 +12,38 @@ public class PlayerMovement : MonoBehaviour
     public float acceleration = 1200f;
     public float deceleration = 20f;
     
-    public float riseSpeed = 10f;
-    public float sinkSpeed = 10f;
+    
     
     public float rotationSpeed = 15f;
     
     // NOTE: Aiming is currently handled by Cinemachine
     // [Header("Aiming")]
     // float rotationPower = 1f;
+
+    [Header("Rise/ Sink")] 
+    [NonSerialized]
+    public bool isRising = false;
+    [NonSerialized]
+    public bool isSinking = false;
+
+    public float riseSpeed = 10f;
+    public float sinkSpeed = 10f;
+    
     
     private void Awake() {
         core = GetComponent<PlayerCore>();
+    }
+
+    private void FixedUpdate() {
+        if (!(isRising && isSinking)) {  // Cannot rise and sink at same time
+            if (isRising) {
+                core.rb.velocity += riseSpeed * Vector3.up;
+            }
+            if (isSinking) {
+                core.rb.velocity += sinkSpeed * Vector3.down;
+            }
+        }
+        
     }
 
     public void MovePlayer(Vector2 moveDir) {
