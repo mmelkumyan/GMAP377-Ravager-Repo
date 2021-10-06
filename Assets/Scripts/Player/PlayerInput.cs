@@ -26,10 +26,10 @@ public class PlayerInput : MonoBehaviour
         
         playerControls.Gameplay.Punch.performed += ctx => core.arms.Punch();
         
-        playerControls.Gameplay.LeftAim.performed += ctx => core.camera.leftAiming = true;
-        playerControls.Gameplay.LeftAim.canceled += ctx => core.camera.leftAiming = false;
-        playerControls.Gameplay.RightAim.performed += ctx => core.camera.rightAiming = true;
-        playerControls.Gameplay.RightAim.canceled += ctx => core.camera.rightAiming = false;
+        playerControls.Gameplay.LeftAim.performed += ctx => core.cam.leftAiming = true;
+        playerControls.Gameplay.LeftAim.canceled += ctx => core.cam.leftAiming = false;
+        playerControls.Gameplay.RightAim.performed += ctx => core.cam.rightAiming = true;
+        playerControls.Gameplay.RightAim.canceled += ctx => core.cam.rightAiming = false;
     }
 
     private void Update() {

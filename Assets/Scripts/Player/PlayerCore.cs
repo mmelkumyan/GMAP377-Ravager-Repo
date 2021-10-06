@@ -25,7 +25,7 @@ public class PlayerCore : MonoBehaviour
     
     public Transform camTransform;
     [NonSerialized]
-    public PlayerCamera camera;
+    public PlayerCamera cam;
 
     private void Awake() {
 	    // rb = GetComponent<Rigidbody>();  // FIXME: Returning null for some reason?
@@ -33,6 +33,6 @@ public class PlayerCore : MonoBehaviour
 	    movement = GetComponent<PlayerMovement>();
 	    controller = GetComponent<PlayerInput>();
 	    arms = GetComponent<PlayerArms>();
-	    camera = GetComponent<PlayerCamera>();
+	    cam = GetComponent<PlayerCamera>();
     }
 }

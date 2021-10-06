@@ -16,10 +16,10 @@ public class PlayerArms : MonoBehaviour
     }
 
     public void Punch() {
-        if (core.camera.leftAiming || !(core.camera.leftAiming || core.camera.rightAiming)) {
+        if (core.cam.leftAiming || !(core.cam.leftAiming || core.cam.rightAiming)) {
             PunchLeft();
         }
-        if (core.camera.rightAiming || !(core.camera.leftAiming || core.camera.rightAiming)) {
+        if (core.cam.rightAiming || !(core.cam.leftAiming || core.cam.rightAiming)) {
             PunchRight();
         }
 
