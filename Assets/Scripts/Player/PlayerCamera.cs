@@ -6,9 +6,7 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour 
 {
-    public GameObject freeCamera;
-
-    public GameObject aimCamera;
+    public CinemachineVirtualCamera aimCamera;
     public CinemachineFreeLook freeCam;
     
     [NonSerialized]
@@ -22,12 +20,12 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update() {
         if (aiming) {
-            aimCamera.SetActive(true);
-            freeCamera.SetActive(false);
+            aimCamera.gameObject.SetActive(true);
+            freeCam.gameObject.SetActive(false);
         }
         else {
-            aimCamera.SetActive(false);
-            freeCamera.SetActive(true);
+            aimCamera.gameObject.SetActive(false);
+            freeCam.gameObject.SetActive(true);
         }
     }
 
@@ -36,7 +34,7 @@ public class PlayerCamera : MonoBehaviour
         // Sets x value to directly behind player
         float yRotation = transform.rotation.eulerAngles.y;
         freeCam.m_XAxis.Value = (yRotation < 180)
-            ? yRotation- 360f
+            ? yRotation-360f
             : yRotation;
     }
 }

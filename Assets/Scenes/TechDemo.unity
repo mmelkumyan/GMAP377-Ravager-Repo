@@ -337,7 +337,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32873446}
-  m_LocalRotation: {x: 0.18910751, y: -0.000000008626792, z: 0.0000000016613682, w: 0.9819564}
+  m_LocalRotation: {x: 0.18910751, y: -0.0000000084479606, z: 0.0000000016269286, w: 0.9819564}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -738,7 +738,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266768359}
-  m_LocalRotation: {x: 0.14326225, y: -0.000000008514426, z: 0.0000000012325093, w: 0.98968476}
+  m_LocalRotation: {x: 0.14326225, y: -0.000000008514446, z: 0.0000000012325124, w: 0.98968476}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1063,15 +1063,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 25
+  povSpeedPercent: 0.5
   acceleration: 20
   deceleration: 20
   rotationSpeed: 15
-  xAimSensitivity: 90
+  xAimSensitivity: 60
   yAimSensitivity: 90
   minAimAngle: 60
   maxAimAngle: 60
-  riseSpeed: 135
-  sinkSpeed: 135
+  riseSpeed: 150
+  sinkSpeed: 150
 --- !u!54 &417769740
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1129,8 +1130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2edd4bf6fd2984243b629f91356261fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freeCamera: {fileID: 974991154}
-  aimCamera: {fileID: 1663198666}
+  aimCamera: {fileID: 1663198668}
   freeCam: {fileID: 974991155}
 --- !u!114 &417769744
 MonoBehaviour:
@@ -1601,7 +1601,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 724863455}
-  m_LocalRotation: {x: 0.16618015, y: -0.0000000035708811, z: -6.018051e-10, w: 0.9860955}
+  m_LocalRotation: {x: 0.16618015, y: -0.0000000035708811, z: -6.0180516e-10, w: 0.9860955}
   m_LocalPosition: {x: 0, y: 8, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2065,7 +2065,7 @@ MonoBehaviour:
   m_YAxis:
     Value: 0.5
     m_SpeedMode: 0
-    m_MaxSpeed: 2
+    m_MaxSpeed: 1
     m_AccelTime: 0.2
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
@@ -2089,7 +2089,7 @@ MonoBehaviour:
   m_XAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 300
+    m_MaxSpeed: 200
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -2136,14 +2136,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974991154}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 42, z: -12}
+  m_LocalPosition: {x: 0, y: 8, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 32873447}
   - {fileID: 908495380}
   - {fileID: 266768361}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1744105681}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &974991157
 MonoBehaviour:
@@ -3384,12 +3384,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663198666}
   m_LocalRotation: {x: 0.11268952, y: -0.000000016564188, z: 0.0000000018785764, w: 0.9936303}
-  m_LocalPosition: {x: 0.00000032493972, y: 41.239433, z: 0.25397813}
+  m_LocalPosition: {x: 0, y: 7.2394333, z: -7.7460217}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 875040311}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1744105681}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1708933185
 GameObject:
@@ -3631,6 +3631,8 @@ Transform:
   - {fileID: 417769737}
   - {fileID: 1619908499}
   - {fileID: 724863456}
+  - {fileID: 974991156}
+  - {fileID: 1663198669}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4064,7 +4066,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1924359974
 GameObject:

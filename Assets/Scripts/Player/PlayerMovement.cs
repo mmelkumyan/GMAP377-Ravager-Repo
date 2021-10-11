@@ -26,8 +26,8 @@ public class PlayerMovement : MonoBehaviour
     private float xAimRotation = 0f;
 
     [Header("Rise/ Sink")] 
-    public float riseSpeed = 10f;
-    public float sinkSpeed = 10f;
+    public float riseSpeed = 150f;
+    public float sinkSpeed = 150f;
     
     [NonSerialized] public bool isRising = false;
     [NonSerialized] public bool isSinking = false;
@@ -90,11 +90,12 @@ public class PlayerMovement : MonoBehaviour
         float dyAimRotation = aimDir.x * yAimSensitivity * Time.deltaTime;
         
         // Up/down aim
-        xAimRotation -= aimDir.y * xAimSensitivity * Time.deltaTime;
+        float dxAimRotation = aimDir.y * xAimSensitivity * Time.deltaTime;
+        xAimRotation -= dxAimRotation;
         xAimRotation = Mathf.Clamp(xAimRotation, -maxAimAngle, minAimAngle);
         
-        Vector3 prevAngles = transform.rotation.eulerAngles;
-        transform.rotation = Quaternion.Euler(xAimRotation, prevAngles.y + dyAimRotation, prevAngles.z);
+        Vector3 prevRotation = transform.rotation.eulerAngles;
+        transform.rotation = Quaternion.Euler(xAimRotation, prevRotation.y + dyAimRotation, prevRotation.z);
     }
     
     public void ResetAimAngle() {
