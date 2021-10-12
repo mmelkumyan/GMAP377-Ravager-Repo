@@ -23,4 +23,19 @@ public class PlayerArms : MonoBehaviour
         rightAnimator.SetTrigger("Punch");
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name == "Speed Up Item")
+        {
+            core.movement.maxSpeed += 10f;
+            core.movement.acceleration += 300f;
+            core.movement.deceleration += 10f;
+            core.movement.rotationSpeed += 5f;
+            core.movement.riseSpeed += 60f;
+            core.movement.sinkSpeed += 60f;
+            core.particleHolder.GetComponent<ParticleCore>().growAnim();
+            Destroy(collision.gameObject);
+            core.gameObject.transform.localScale += new Vector3(0.3f, 0.3f, 0.3f);
+        }
+    }
 }

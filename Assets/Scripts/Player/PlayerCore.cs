@@ -13,6 +13,7 @@ public class PlayerCore : MonoBehaviour
     [NonSerialized] public PlayerInput controller;
 
     public GameObject cameraFollowTarget;
+    public GameObject particleHolder;
 
     [NonSerialized] public PlayerArms arms;
     
