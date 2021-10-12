@@ -5,16 +5,17 @@ using UnityEngine;
 
 public class PlayerCore : MonoBehaviour
 {
-    // [NonSerialized]
     public Rigidbody rb;
-	
-    [NonSerialized] public PlayerMovement movement;
     
     [NonSerialized] public PlayerInput controller;
+	
+    [NonSerialized] public PlayerMovement movement;
 
-    public GameObject cameraFollowTarget;
+    [NonSerialized] public PlayerStats stats;
 
     [NonSerialized] public PlayerArms arms;
+    
+    public GameObject cameraFollowTarget;
     
     [NonSerialized] public PlayerCamera cam;
 
@@ -22,8 +23,9 @@ public class PlayerCore : MonoBehaviour
 
     private void Awake() {
 	    // rb = GetComponent<Rigidbody>();  // FIXME: Returning null for some reason?
-	    movement = GetComponent<PlayerMovement>();
 	    controller = GetComponent<PlayerInput>();
+	    movement = GetComponent<PlayerMovement>();
+	    stats = GetComponent<PlayerStats>();
 	    arms = GetComponent<PlayerArms>();
 	    cam = GetComponent<PlayerCamera>();
     }
