@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6918417674151648164}
   - component: {fileID: 6918417674151648165}
+  - component: {fileID: 266739595606775066}
   m_Layer: 0
   m_Name: Item Spawner
   m_TagString: Untagged
@@ -48,3 +49,19 @@ MonoBehaviour:
   itemXSpread: 100
   itemYSpread: 0
   itemZSpread: 100
+--- !u!114 &266739595606775066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6918417674151648162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c238e74db98b763418bb3620fd916db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stringSeed: seed string
+  useStringSeed: 0
+  seed: 43
+  randomizeSeed: 0
