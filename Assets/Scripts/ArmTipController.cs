@@ -36,14 +36,25 @@ public class ArmTipController : MonoBehaviour
 
             float dx = moveDir.x * speed * Time.deltaTime;
             float dy = moveDir.y * speed * Time.deltaTime;
+            
+            // float vx = moveDir.x * speed;
+            // float vy = moveDir.y * speed;
 
-            rb.position += new Vector3(dy, 0, -dx);
-
+            // rb.position += new Vector3(0, dy, dx);
+            // rb.velocity = new Vector3(vy, 0, -vx);
+            // transform.position += new Vector3(dy, 0, -dx);
+            
+            rb.MovePosition( rb.position + new Vector3(dy, 0, -dx));
+            // rb.MovePosition(new Vector3(0, dy, dx));
+            
+            // TODO: use RIGID BODY MOVEMENT for tip
         }
         else {  // Stop moving -> decelerate to zero in currentDir
             rb.velocity = Vector3.Lerp(rb.velocity,  Vector3.zero, deceleration * Time.deltaTime);
         }
     }
+    
+    // NOTE: The key is making the arm tip KINEMATIC! make the target point mesh off.
     
     private void OnEnable() {
         playerControls.Gameplay.Enable();
